@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import classes from './Layout.module.scss';
 
 const Layout = (props) => {
-  console.log(props.children)
   return(
     <Fragment>
       <div>Toolbar, SideDrawer, Backdrop</div>
