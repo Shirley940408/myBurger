@@ -57,13 +57,13 @@ class BurgerBuilder extends Component{
       //{salad: true, meat: false...}
     }
     return (
-      <Fragment>
+      <div>
         <Burger ingredients = {this.state.ingredients} />
         <BuildControls 
         ingredientAdded = {this.addIngredientHandler}
         ingredientRemoved = {this.removeIngredientHandler}
         disabled = {disabledInfo}/>
-      </Fragment>
+      </div>
     );
   }
 }
