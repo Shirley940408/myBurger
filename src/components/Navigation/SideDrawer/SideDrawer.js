@@ -1,10 +1,11 @@
 import React from 'react';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NationItems';
+import classes from './SideDrawer.module.scss';
 
 const sideDrawer = props => {
   return (
-    <div>
+    <div className = {classes.SideDrawer}>
       <Logo />
       <nav>
         <NavigationItems />
@@ -12,3 +13,4 @@ const sideDrawer = props => {
     </div>
   );
 }
+export default sideDrawer;
