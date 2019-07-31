@@ -67,7 +67,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-### How to add the classes directly in the JSX element 
+### How to add the CSS classes directly in the JSX element 
 ```jsx
 const button = props => (
   <button 
@@ -158,3 +158,9 @@ export default BuildControl;
 .BuildControl button{...} 
 .BuildControl .More {...} 
 ```
+## Http Requsts
+### Difference of React App (single-page app) and other app (multi-page app).
+- ##### React App could decouple the server and the showing pages in the front-end, it means the response from the server side is not html pages, is the JSON data.
+- ##### Ather app(multi-page app) cannot decouple with server, that means its response from the server is html pages.
+
+[request and response](./img/httpRequest.png)
