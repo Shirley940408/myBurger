@@ -264,3 +264,22 @@ componentDidMount () {
         //axios used promises to achieve asychronize
     }
 ```
+#### Authorization: 'Auth Token' has been added in to header
+[requestAuthorization](./img/requestAuthorization.png)
+#### contentType has been added in header 
+[postContentType]('./img/postContentType.png')
+
+- #### If you need more than one url
+ #### create the axios.js file, then replace them when the url is different with global file.
+```jsx
+import axios from 'axios';
+
+const instance = axios.create({
+  baseURL:'https://jsonplaceholder.typicode.com'
+});
+
+instance.defaults.headers.common['Authorization'] ='AUTH TOKEN';
+// instance.interceptors.request...
+
+export default instance;
+```
