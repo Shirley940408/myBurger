@@ -158,8 +158,10 @@ export default BuildControl;
 .BuildControl button{...} 
 .BuildControl .More {...} 
 ```
-## Http Requests
+## Http requst
+
 ### Difference of React App (single-page app) and other app (multi-page app).
+
 - ##### React App could decouple the server and the showing pages in the front-end, it means the response from the server side is not html pages, is the JSON data.
 - ##### Ather app(multi-page app) cannot decouple with server, that means its response from the server is html pages.
 
@@ -167,3 +169,8 @@ export default BuildControl;
 
 ### axios
 ##### axios is a third-part library and it could be added in any javascript environment. It used to send http requests. 
+##### [GitHub - axios/axios: Promise based HTTP client for the browser and node.js](https://github.com/axios/axios)
+
+### Using axios to send http request
+#### Attention Points:
+- #### If you are using setState() in componentDidUpdate(), then a Loop problem could be caused, if(...){axios...} might solve this problem.
