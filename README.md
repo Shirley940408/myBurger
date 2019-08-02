@@ -217,3 +217,50 @@ class FullPost extends Component {
 
 export default FullPost;
 ```
+### axios.post
+#### `axios.post('url', data)`
+```jsx
+postDataHandler = () => {
+        const data = {
+            title: this.state.title,
+            body: this.state.content,
+            author: this.state.author,
+        }
+        axios.post('https://jsonplaceholder.typicode.com/posts/', data)
+        .then(response => {
+            console.log(response);
+        });
+    }
+```
+### axios.delete
+#### `axios.delete('url')`
+```jsx
+deletePostHandler = () => {
+    axios.delete('https://jsonplaceholder.typicode.com/posts/' + this.props.id)
+    .then(response => {
+        console.log(response);
+    });
+}
+```
+### catch errors
+#### `.then(...).catch(error => {....})`
+```jsx
+componentDidMount () {
+        axios.get('https://jsonplaceholder.typicode.com/postssss').then(response => {
+            const posts = response.data.slice(0, 4);//get an new array from the [0] position to [3](4-1) elements
+            const updatedPosts = posts.map(post => {
+                return{
+                    ...post,
+                    author: 'Max'
+                }
+            });
+
+            this.setState({ posts: updatedPosts});
+            // console.log(response);
+        }).catch(error => {
+            // console.log(error);
+            this.setState({selectedPostId: true});
+        })
+        //axios used promises to achieve asychronize
+    }
+```
