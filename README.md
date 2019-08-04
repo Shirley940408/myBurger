@@ -283,3 +283,27 @@ instance.defaults.headers.common['Authorization'] ='AUTH TOKEN';
 
 export default instance;
 ```
+### How to use eject to release the RAM room remainng by unused axios Interceptor?(In a class-based component)
+#### e.g. 
+`const Instance = axios.interceptors
+request/response.use(...); axios.interceptors.request/response.eject() `
+```jsx
+    constructor(props){
+      super(props);
+      this.reqInterceptor = axios.interceptors.request.use(req => {
+        this.setState({error: null});
+        return req;
+      })
+      this.resInterceptor = axios.interceptors.response.use(res => res, error => {
+        /* res => res means just ruturn the response, 
+        it is another form of 'return response;' */
+        this.setState({error: {message: 'Network Error'}});
+      })
+    }
+    
+    componentWillUnmount () {
+      axios.interceptors.request.eject(this.reqInterceptor);
+      axios.interceptors.response.eject(this.resInterceptor);
+    }
+
+```
