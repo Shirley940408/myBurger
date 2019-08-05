@@ -267,7 +267,7 @@ componentDidMount () {
 #### Authorization: 'Auth Token' has been added in to header
 [requestAuthorization](./img/requestAuthorization.png)
 #### contentType has been added in header 
-[postContentType]('./img/postContentType.png')
+[postContentType](./img/postContentType.png)
 
 - #### If you need more than one url
  #### create the axios.js file, then replace them when the url is different with global file.
