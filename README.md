@@ -363,3 +363,22 @@ class Blog extends Component {
 
 export default Blog;
 ```
+#### the 'exact' effect
+- ##### Path itself in the route means all the prefix matched this routing path, and it could cause all the path that contain this perfix would be routed to this component which in render. to avoid this, we need to add an 'exact' to only match when the routing path is exactly the same as what we write in path.
+- ##### Another way is to write more specific route on the top, more general on in the bottom.
+
+### default case of route
+`<Route path='...' component = {...} />`
+```jsx
+ <Route path = "/new-post" component = {NewPost}/>
+```
+### Link
+#### Link is for solving reload problem, instead of <a></a>, link could make react to re-render. 
+```jsx
+  <Link to = {{
+      pathname: '/new-post',
+      hash: '#submit',
+      search: '?quick-submit=ture'
+  }}>New Post</Link>
+```
+[Link](./img/Link.png)
