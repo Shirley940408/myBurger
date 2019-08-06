@@ -307,3 +307,59 @@ request/response.use(...); axios.interceptors.request/response.eject() `
     }
 
 ```
+### react router
+`npm install --save react-router react-router-dom`
+
+#### When using react route, always wrap the BrowerRouter of the enter of this, otherwise it will cause error.
+```jsx
+// App.js
+import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Blog from './containers/Blog/Blog';
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="App">
+          <Blog />
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
+
+// Blog.js
+
+import React, { Component } from 'react';
+import './Blog.css';
+import Posts from './Posts/Posts';
+import { Route } from 'react-router-dom';
+class Blog extends Component {
+
+    render () {
+
+        return (
+            <div className ="Blog">
+                <header>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="/new-post">New Post</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <Route path = "/" exact render = {() => <h1>Home</h1>}/>
+            </div>
+        );
+    }
+}
+
+export default Blog;
+```
