@@ -382,3 +382,11 @@ export default Blog;
   }}>New Post</Link>
 ```
 [Link](./img/Link.png)
+
+### Nested Route
+#### use it for dynamic route
+
+```jsx
+  <Route path = {this.props.match.url + "/:id"}  exact component = {FullPost}/>
+```
+#### Attention points: `this.props.match.url` means the url that routed to this component
