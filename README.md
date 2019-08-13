@@ -389,4 +389,10 @@ export default Blog;
 ```jsx
   <Route path = {this.props.match.url + "/:id"}  exact component = {FullPost}/>
 ```
-#### Attention points: `this.props.match.url` means the url that routed to this component
+#### Attention points: `this.props.match.url` means the url that routed to this component, and if you are using Route to transfer the value, then using `+ this.props.match.params.id` in the props components ("+" means String to number, when transfer value is String, "+" must be added in front of the parameters when comparing the value)
+##### e.g.
+```jsx
+if( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== + this.props.match.params.id)){
+  //...
+}
+```
