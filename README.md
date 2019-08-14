@@ -396,3 +396,59 @@ if( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id
   //...
 }
 ```
+### How to load a component in a lazy way? -- using a high order component to load the component when need it.
+
+#### lets say you have a component 'NewPost', it would be render if the auth is true. That means it could be render conditionally. 
+```jsx
+import NewPost from './Posts/NewPost/NewPost';
+//...
+  <Switch>
+      {this.state.auth? <Route path = "/new-post" component = {NewPost}/>: null} 
+      <Route path = "/posts" component = {Posts}/>
+      <Route render = {() => <h1>Not found</h1>}/>
+      {/**<Redirect from = "/" to = "/posts" /> */} 
+  </Switch>
+```
+#### step 1. create a hoc for this
+```jsx
+import React, {Component} from 'react';
+
+const asyncComponent = (importComponent) => {
+  return class extends Component{
+    state = {
+      component: null
+    }
+
+    componentDidMount(){
+      importComponent()
+      .then(cmp => {
+        this.setState({component: cmp.default});
+      });
+    }
+    
+    render(){
+      const C = this.state.component;
+
+      return C ? <C {...this.props} />: null;
+    }
+  }
+}
+
+export default asyncComponent;
+```
+#### step 2: call this in the original file, and change the origin function to the new created one.
+```jsx
+import asyncComponent from '../../hoc/asyncComponent';
+
+const AsyncNewPost = asyncComponent(() => {
+    return import('./Posts/NewPost/NewPost');
+});
+
+//...
+  <Switch>
+      {this.state.auth? <Route path = "/new-post" component = {AsyncNewPost}/>: null} 
+      <Route path = "/posts" component = {Posts}/>
+      <Route render = {() => <h1>Not found</h1>}/>
+      {/**<Redirect from = "/" to = "/posts" /> */} 
+  </Switch>
+```
