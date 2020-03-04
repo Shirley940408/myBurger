@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Burger.module.scss';
 import BurgerIngredient from './BurgerIngerdient.js/BurgerIngerdient';
+// import { withRouter } from 'react-router-dom';
 
 const Burger = props => {
   let transformedIngredients = Object.keys(props.ingredients).map(
